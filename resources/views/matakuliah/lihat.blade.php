@@ -8,12 +8,12 @@
 				<tr>
 						<td>Title</td>
 						<td>:</td>
-						<td>{{ $matakuliah->title }}</td>
+						<td>{{ $matakuliah->Title }}</td>
 				</tr>
 				<tr>
 						<td>Keterangan</td>
 						<td>:</td>
-						<td>{{ $matakuliah->keterangan }}</td>
+						<td>{{ $matakuliah->Keterangan }}</td>
 				</tr>
 
 				<tr>

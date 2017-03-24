@@ -21,8 +21,8 @@
 								@foreach ($data as $matakuliah)
 									<tr>
 									<td>{{ $x++ }}</td>
-									<td>{{ $matakuliah->title or 'title kosong'}}</td>
-									<td>{{ $matakuliah->keterangan or 'keterangan kosong'}}</td>
+									<td>{{ $matakuliah->Title or 'title kosong'}}</td>
+									<td>{{ $matakuliah->Keterangan or 'keterangan kosong'}}</td>
 									<td>
 										<div class="btn-group" role-"group">
 											<a href="{{url('matakuliah/edit/'.$matakuliah->id)}}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Ubah">

@@ -8,7 +8,7 @@
 				<tr>
 						<td>Title</td>
 						<td>:</td>
-						<td>{{ $ruangan->title }}</td>
+						<td>{{ $ruangan->Title }}</td>
 				</tr>
 								<tr>
 						<td class="col-xs-4">Dibuat tanggal</td>
