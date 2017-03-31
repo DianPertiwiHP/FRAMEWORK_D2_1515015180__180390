@@ -27,4 +27,11 @@ class DosenController extends Controller
     	$dosenn ->save();
     	return "data dengan username($dosenn->Nama)telah disimpan";
     }
+    public function dosenmengajar()
+    {
+        $dosen_mengajar = App\dosenn::find(1)->dosen_mengajar;
+        foreach ($dosen_mengajar as $mengajar) {
+            
+        }
+    }
 }

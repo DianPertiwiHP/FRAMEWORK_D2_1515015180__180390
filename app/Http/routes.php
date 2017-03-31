@@ -83,3 +83,4 @@ Route::get('dosenn/tambah', 'DosennaController@tambah');
 // Route::post('jadwal_matakuliah/edit/{jadwal_matakuliah}','jadwal_matakuliahController@update');
 // Route::get('jadwal_matakuliah/hapus/{jadwal_matakuliah}','jadwal_matakuliahController@hapus');
 
+Route::get('dosenmengajar', 'DosenController@dosenmengajar');

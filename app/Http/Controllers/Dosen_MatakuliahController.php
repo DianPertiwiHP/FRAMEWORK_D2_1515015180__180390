@@ -25,4 +25,6 @@ class Dosen_MatakuliahController extends Controller
    	$dosen_matakuliah->save();
    	return "data dengan dosen_id {$dosen_matakuliah->dosen_id} telah disimpan";
    }
+
+  
 }

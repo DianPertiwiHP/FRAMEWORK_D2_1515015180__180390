@@ -8,4 +8,19 @@ class dosen_matakuliah extends Model
 {
     protected $table = 'dosen_matakuliah';
    protected $fillable = ['dosen_id','matakuliah_id'];
-}
+
+    public function dosen()
+   {
+      return $this->belongsToMany(dosenn::class, 'id')
+   }
+
+   public function matakuliah()
+   {
+      return $this->hasMany(matakuliah::class)
+   
+
+   public function jadwal_matakuliah()
+   {
+      return $this->hasMany(jadwal_matakuliah::class)
+   }
+ }
