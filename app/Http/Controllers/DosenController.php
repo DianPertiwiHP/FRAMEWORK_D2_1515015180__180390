@@ -5,33 +5,69 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\dosenn;
+use App\Dosenn;
+use App\Pengguna;
 
-class DosenController extends Controller
+class dosenController extends Controller
 {
-    public function awal()
-    {
-    	return "Hello dari DosenController";
-    }
+  protected $informasi = 'Gagal Melakukan Aksi';
+  public function awal()
+  {
+    $semuaDosen = Dosenn::all();
+    return view('dosenn.awal', compact('semuaDosen'));
+  }
     public function tambah()
     {
-    	return $this ->simpan();
+        return view('dosenn.tambah');
+         }
+  public function simpan(Request $input)
+  {
+    $pengguna = new Pengguna($input->only('username','password'));
+      if ($pengguna->save())
+      {
+        $dosenn = new dosenn;
+        $dosenn->Nama = $input->Nama;
+        $dosenn->NIP = $input->NIP;
+        $dosenn->Alamat = $input->Alamat;
+          if ($pengguna->dosenn()->save($dosenn)) $this->informasi = 'Berhasil simpan data';
     }
-    public function simpan()
-    {
-    	$dosenn = new dosenn();
-    	$dosenn->Nama = 'Susi';
-    	$dosenn ->NIP = '121213';
-    	$dosenn ->Alamat = 'Jl. Perjuangan';
-        $dosenn->pengguna_id ='1';
-    	$dosenn ->save();
-    	return "data dengan username($dosenn->Nama)telah disimpan";
+      return redirect('dosenn')->with(['informasi' => $this->informasi]);
     }
-    public function dosenmengajar()
-    {
-        $dosen_mengajar = App\dosenn::find(1)->dosen_mengajar;
-        foreach ($dosen_mengajar as $mengajar) {
-            
+    public function edit($id){
+      $dosenn = dosenn::find($id);
+      return view('dosenn.edit')->with(array('dosenn' => $dosenn));
+    }
+    public function lihat($id){
+      $dosenn = dosenn::find($id);
+      return view('dosenn.lihat')->with(array('dosenn' => $dosenn));
+    }
+    public function update($id, Request $input){
+      $dosenn = dosenn::find($id);
+      $dosenn->Nama = $input->Nama;
+      $dosenn->NIP = $input->NIP;
+      $dosenn->Alamat = $input->Alamat;
+      $dosenn->save();
+      
+        if (!is_null($input->username))
+        {
+          $pengguna = $dosenn->pengguna->fill($input->only('username'));
+          if (!empty($input->password)) $pengguna->password = $input->password;
+          if ($pengguna->save()) $this->informasi = 'Berhasil simpan data';
         }
-    }
+        else
+        {
+          $this->informasi = 'Berhasil simpan data';
+        }
+        
+        return redirect('dosenn')->with(['informasi' => $this->informasi]);
+      }
+      public function hapus($id) {
+        $dosenn = dosenn::find($id);
+        if ($dosenn->pengguna()->delete())
+        {
+          if ($dosenn->delete()) $this->informasi = 'Berhasil hapus data';
+        }
+        return redirect('dosenn')->with(['informasi' => $this->informasi]);
+        }
+  
 }

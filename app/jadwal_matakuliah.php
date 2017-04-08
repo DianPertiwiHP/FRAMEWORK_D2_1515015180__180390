@@ -7,19 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class jadwal_matakuliah extends Model
 {
   protected $table = 'jadwal_matakuliah';
-  protected $fillable = ['mahasiswa_id','ruangan_id','dosen_matakuliah_id'];
+  protected $guarded= ['id'];
 
   public function mahasiswa()
     {
-    	return $this ->belongsToMany(mahasiswa::class);
+    	return $this ->belongsTo(mahasiswa::class, 'Mahasiswa_id');
     }
 
     public function ruangan()
     {
-    	return $this ->belongsToMany(ruangan::class);
+    	return $this ->belongsTo(ruangan::class, 'Ruangan_id');
     }
     public function dosen_matakuliah()
     {
-    	return $this ->belongsToMany(dosen_matakuliah::class);
+    	return $this ->belongsTo(dosen_matakuliah::class,'Dosen_Matakuliah_id');
     }
 }

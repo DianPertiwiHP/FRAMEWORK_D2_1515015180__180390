@@ -48,7 +48,7 @@
 								<li class="dropdown active">
 									<a href="#" data-toggle="dropdown" role="button" aria-hapopup="true" aria-expended="false"> Dosen <span class="caret"></span> </a>
 										<ul class="dropdown-menu" aria-labelledby="dLabel">
-											<li><a href="{{url('dosen')}}">Data Dosen</a></li>
+											<li><a href="{{url('dosenn')}}">Data Dosen</a></li>
 											<li><a href="{{url('dosen_matakuliah')}}">Jadwal Dosen Mengajar</a></li>
 										</ul>
 								</li>

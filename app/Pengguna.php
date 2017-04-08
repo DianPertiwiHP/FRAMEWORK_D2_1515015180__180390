@@ -10,17 +10,17 @@ class Pengguna extends Model
     protected $fillable =['username', 'password']; //fillable yang boleh diisi
 
     public function mahasiswa(){
-    	return $this->hasOne(mahasiswa::class, 'pengguna_id'); //memanggil kelas mahasiswa didalam tabel pengguna
+    	return $this->hasOne(mahasiswa::class); //memanggil kelas mahasiswa didalam tabel pengguna
     }
    
     public function dosenn()
     {
-    	return $this->hasOne(dosenn::class, 'pengguna_id');
+    	return $this->hasOne(dosenn::class);
     }
 
      public function peran()
     {
-    	return $this->belongsToMany(Peran::class, 'pengguna_id');
+    	return $this->belongsToMany(Peran::class);
     }
 }
 

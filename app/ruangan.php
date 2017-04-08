@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ruangan extends Model
 {
     protected $table = 'ruangan';
-    protected $fillable = ['title'];
+    protected $fillable = ['Title'];
 
     public function jadwal_matakuliah()
     {

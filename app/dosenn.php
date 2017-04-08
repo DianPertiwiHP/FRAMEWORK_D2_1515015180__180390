@@ -7,13 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class dosenn extends Model
 {
     protected $table='dosenn';
-    protected $fillable=['Nama','NIP', 'Alamat','pengguna_id'];
+    protected $guarded = ['id'];
 
     public function Pengguna(){
-    	return $this ->belongsTo(Pengguna::class,'id');
+    	return $this->belongsTo(Pengguna::class);
     }
     public function dosen_matakuliah()
     {
-    	return $this->hasMany(dosen_Matakuliah::class,'dosen_id');
+    	return $this->hasMany(dosen_matakuliah::class,'Dosen_id');
     }
+    public function listDosenDanNIP()
+   {
+      $out = [];
+      foreach ($this->all() as $dsn) {
+         $out[$dsn->id] = "{$dsn->Nama} ({$dsn->NIP})";
+      }
+      return $out;
+   }
 }
